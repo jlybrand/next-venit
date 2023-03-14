@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('./search-form.css');
+@import url('./navigation.css');
 
 * {
   @apply box-border m-0 p-0
