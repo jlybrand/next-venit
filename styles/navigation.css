@@ -27,19 +27,15 @@
 }
 
 .nav-bar__items-container {
-    @apply w-full block flex-grow lg:flex lg:items-center lg:w-auto
+    @apply w-full block lg:flex lg:items-center lg:gap-12 lg:w-auto
 }
 
 .nav-bar__items {
-    @apply text-sm lg:flex-grow
+    @apply text-sm
 }
 
 .nav-bar__item {
     @apply block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-xl
-}
-
-.nav-bar__item:nth-child(3) {
-    @apply mr-0
 }
 
 .nav-bar__search {
