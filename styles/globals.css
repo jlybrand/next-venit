@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('./search-form.css');
+
+* {
+  @apply box-border m-0 p-0
+}
+
+body {
+  @apply h-screen
+}

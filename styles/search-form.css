@@ -1,0 +1,28 @@
+body {
+    @apply bg-slate-200
+}
+
+.search-form {
+    @apply bg-white max-w-md mt-48 mx-auto px-8 pt-6 pb-8 mb-4 rounded shadow-md
+}
+
+.search-form__row {
+    @apply py-4
+}
+
+.search-form__row label {
+    @apply block text-gray-700 text-sm font-bold pb-4
+}
+
+
+.search-form__row input {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-lg
+}
+
+.search-form__row select {
+    @apply bg-white shadow border rounded w-full py-2 px-3
+}
+
+.search-form button {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full
+}
