@@ -1,0 +1,47 @@
+.nav-bar {
+    @apply flex items-center justify-between flex-wrap bg-gray-400 p-8
+}
+
+.nav-bar__wrapper {
+    @apply flex items-center flex-shrink-0 text-white mr-6
+}
+
+.nav-bar__logo {
+    @apply fill-current h-10 w-10 mr-2
+}
+
+.nav-bar__title {
+    @apply font-semibold text-4xl tracking-tight
+}
+
+.nav-bar__bttn-container {
+    @apply block lg:hidden
+}
+
+.nav-bar__bttn {
+    @apply flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white
+}
+
+.nav-bar__bttn__svg {
+    @apply fill-current h-3 w-3
+}
+
+.nav-bar__items-container {
+    @apply w-full block flex-grow lg:flex lg:items-center lg:w-auto
+}
+
+.nav-bar__items {
+    @apply text-sm lg:flex-grow
+}
+
+.nav-bar__item {
+    @apply block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-xl
+}
+
+.nav-bar__item:nth-child(3) {
+    @apply mr-0
+}
+
+.nav-bar__search {
+    @apply inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0
+}
