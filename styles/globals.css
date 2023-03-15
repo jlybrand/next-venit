@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('./search-form.css');
+@import url('./form.css');
 @import url('./navigation.css');
 
 * {
@@ -10,5 +10,5 @@
 }
 
 body {
-  @apply h-screen
+  @apply bg-slate-200 h-screen 
 }
