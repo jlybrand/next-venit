@@ -15,35 +15,37 @@ export default function Form() {
     <form onSubmit={handleSubmit} className="search-form">
       <div className="search-form__row">
         <label>
-          Street Address
+          Your Business Address
           <input
             type="text"
             value={streetAddress}
             onChange={(event) => setStreetAddress(event.target.value)}
             pattern="[A-Za-z0-9\s]+"
+            placeholder='ex. 127 Maple Street'
             required
           />
         </label>
       </div>
       <div className="search-form__row">
         <label>
-          Zip Code
+          Your Business Zip Code
           <input
             type="text"
             value={zipCode}
             onChange={(event) => setZipCode(event.target.value)}
             pattern="\d{5}"
+            placeholder='ex. 12345'
             required
           />
         </label>
       </div>
       <div className="search-form__row">
         <label>
-          Radius
           <select
             value={radius}
             onChange={(event) => setRadius(event.target.value)}
           >
+            <option value="" selected >Select a search radius</option>
             {Array.from({ length: 40 }, (_, index) => (index + 1) * 5).map(
               (value) => (
                 <option key={value} value={value}>
@@ -56,7 +58,6 @@ export default function Form() {
       </div>
       <div className="search-form__row">
         <label>
-          Business Type
           <select
             value={businessType}
             onChange={(event) => setBusinessType(event.target.value)}
