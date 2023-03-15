@@ -1,16 +1,16 @@
-.search-form,  .register-form {
+.search-form, .signin-form, .register-form {
     @apply bg-white max-w-xl  md:mt-40 mx-auto px-8 pt-6 pb-8 mb-4 rounded shadow-md
 }
 
-.search-form__row, .register-form__row {
+.search-form__row, .signin-form__row, .register-form__row {
     @apply py-4
 }
 
-.search-form__row label, .register-form label {
+.search-form__row label, .signin-form__row label, .register-form label {
     @apply block text-gray-700 text-sm font-bold pb-4
 }
 
-.search-form__row input, .register-form input {
+.search-form__row input, .signin-form input, .register-form input {
     @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-lg
 }
 
@@ -18,6 +18,6 @@
     @apply bg-white shadow border rounded w-full py-2 px-3
 }
 
-.search-form button, .register-form button {
+.search-form button, .signin-form button, .register-form button {
     @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full
 }
