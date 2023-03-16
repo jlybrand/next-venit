@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Form() {
+export default function SearchForm() {
   const [streetAddress, setStreetAddress] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [radius, setRadius] = useState(5);
