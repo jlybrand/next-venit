@@ -1,5 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from "axios";
+const API_URL = process.env.API_URL;
+const API_KEY_NAME = process.env.API_KEY_NAME;
+const API_KEY_VALUE = process.env.API_KEY_VALUE;
 
 const sicCodes = {
   dentists: "802101",
@@ -39,12 +42,11 @@ export default async function handler(req, res) {
       maxMatches: 4000,
     },
   };
-console.log(`${process.env.API_URL}?${process.env.API_KEY_NAME}=${process.env.API_KEY_VALUE}`,)
+// console.log(`${process.env.API_URL}?${process.env.API_KEY_NAME}=${process.env.API_KEY_VALUE}`);
   try {
-    const apiResponse = await axios.post(
-      `${process.env.API_URL}?${process.env.API_KEY_NAME}=${process.env.API_KEY_VALUE}`,
-      params
-    );
+    const apiResponse = await axios.post(`${API_URL}?${API_KEY_NAME}=${API_KEY_VALUE}`, params);
+
+    console.log('apiResponse :', `${API_URL}?${API_KEY_NAME}=${API_KEY_VALUE}`);
 
     if (apiResponse.data.resultsCount) {
       const searchResults = apiResponse.data.searchResults.map((result) => {
