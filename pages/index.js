@@ -1,5 +1,5 @@
 function HomePage() {
-  return <div>Welcome to Next.js!</div>
+  return <div className="flex justify-center ">Welcome to X-Marketing</div>
 }
 
 export default HomePage
