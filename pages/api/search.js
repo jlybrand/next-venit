@@ -1,5 +1,7 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from "axios";
+const API_URL = process.env.API_URL;
+const API_KEY_NAME = process.env.API_KEY_NAME;
+const API_KEY_VALUE = process.env.API_KEY_VALUE;
 
 const sicCodes = {
   dentists: "802101",
@@ -10,17 +12,16 @@ const sicCodes = {
 
 export default async function handler(req, res) {
   const { streetAddress, zipCode, radius, businessType } = req.body;
-  // console.log(streetAddress, zipCode, radius, businessType );
-  const origin = `${streetAddress} ${zipCode};`;
+  const origin = `${streetAddress} ${zipCode}`;
   const sicCode = sicCodes[businessType];
-  // console.log(sicCode);
+
   const params = {
     origin: origin,
     hostedDataList: [
       {
         tableName: "mqap.ntpois",
         extraCriteria: "group_sic_code LIKE ?",
-        parameters: [`${businessType}`],
+        parameters: [`${sicCode}`],
         columnNames: [
           "name",
           "address",
@@ -39,10 +40,14 @@ export default async function handler(req, res) {
       maxMatches: 4000,
     },
   };
-console.log(`${process.env.API_URL}?${process.env.API_KEY_NAME}=${process.env.API_KEY_VALUE}`,)
+
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`REQUEST: ${API_URL}?origin=${origin}, radius=${radius}`);
+  }
+
   try {
     const apiResponse = await axios.post(
-      `${process.env.API_URL}?${process.env.API_KEY_NAME}=${process.env.API_KEY_VALUE}`,
+      `${API_URL}?${API_KEY_NAME}=${API_KEY_VALUE}`,
       params
     );
 
@@ -50,13 +55,11 @@ console.log(`${process.env.API_URL}?${process.env.API_KEY_NAME}=${process.env.AP
       const searchResults = apiResponse.data.searchResults.map((result) => {
         return result.fields;
       });
-      console.log(searchResults);
-      return searchResults;
+
+      res.status(200).json(searchResults);
     } else return -1;
   } catch (error) {
-    console.log("Error from search.fetchData: ", error);
+    console.log("Error from search handler: ", error);
     throw error;
   }
-
-  // res.status(200).json({ API_URL: process.env.API_URL });
 }

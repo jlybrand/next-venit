@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
 
-export default function Form() {
-  const [streetAddress, setStreetAddress] = useState('');
-  const [zipCode, setZipCode] = useState('');
+export default function SearchForm() {
+  const [streetAddress, setStreetAddress] = useState("");
+  const [zipCode, setZipCode] = useState("");
   const [radius, setRadius] = useState(5);
-  const [businessType, setBusinessType] = useState('');
+  const [businessType, setBusinessType] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await axios.post("/api/search", {
-        streetAddress,
-        zipCode,
-        radius,
-        businessType
+      const res = await fetch("/api/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          streetAddress,
+          zipCode,
+          radius,
+          businessType,
+        }),
       });
-      console.log(res);
 
+      const searchResults = await res.json();
+      console.log("DATA :", searchResults);
     } catch (err) {
       console.log(err);
     }
@@ -31,10 +37,9 @@ export default function Form() {
           <input
             type="text"
             value={streetAddress}
-            // value='104 N Main Street'
             onChange={(event) => setStreetAddress(event.target.value)}
             pattern="[A-Za-z0-9\s]+"
-            placeholder='ex. 127 Maple Street'
+            placeholder="ex. 127 Maple Street"
             required
           />
         </label>
@@ -45,19 +50,19 @@ export default function Form() {
           <input
             type="text"
             value={zipCode}
-            // value='29601'
             onChange={(event) => setZipCode(event.target.value)}
             pattern="\d{5}"
-            placeholder='ex. 12345'
+            placeholder="ex. 12345"
             required
           />
         </label>
       </div>
       <div className="search-form__row">
-        <label> Select a Search Radius
+        <label>
+          {" "}
+          Select a Search Radius
           <select
             value={radius}
-            // value='10'
             onChange={(event) => setRadius(event.target.value)}
           >
             {Array.from({ length: 40 }, (_, index) => (index + 1) * 5).map(
@@ -74,7 +79,6 @@ export default function Form() {
         <label>
           <select
             value={businessType}
-            // value='dentist'
             onChange={(event) => setBusinessType(event.target.value)}
           >
             <option value="">Select a business type</option>
@@ -88,4 +92,4 @@ export default function Form() {
       <button type="submit">Search</button>
     </form>
   );
-};
+}
